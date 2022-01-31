@@ -1,8 +1,15 @@
+import Grid from './components/Grid';
+import Keyboard from './components/Keyboard';
+import MyProvider from './context/MyProvider';
+
 function App() {
   return (
-    <div className="App">
-      Olá
-    </div>
+    <MyProvider>
+      <main className="App">
+        <Grid />
+        <Keyboard />
+      </main>
+    </MyProvider>
   );
 }
 
