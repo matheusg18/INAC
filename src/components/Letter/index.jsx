@@ -4,7 +4,7 @@ import { LetterGuess } from './Letter.styles';
 import MyContext from '../../context/MyContext';
 
 function Letter({ parentRowNumber, letterNumber }) {
-  const { actualRowCoord, changeRowCoord, Rows } = useContext(MyContext);
+  const { actualRowCoord, changeRowCoord, Rows, rowsState } = useContext(MyContext);
 
   const handleClick = () => {
     changeRowCoord(letterNumber);
@@ -14,6 +14,7 @@ function Letter({ parentRowNumber, letterNumber }) {
     <LetterGuess
       isActual={actualRowCoord[0] === parentRowNumber && actualRowCoord[1] === letterNumber}
       onClick={handleClick}
+      state={rowsState[parentRowNumber][letterNumber]}
     >
       {Rows[parentRowNumber][letterNumber]}
     </LetterGuess>

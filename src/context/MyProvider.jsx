@@ -12,9 +12,22 @@ function MyProvider({ children }) {
     ['', '', '', '', ''],
     ['', '', '', '', ''],
   ]);
+  const [answer, setAnswer] = useState('negão');
+  const [rowsState, setRowsState] = useState([
+    ['none', 'none', 'none', 'none', 'none'],
+    ['none', 'none', 'none', 'none', 'none'],
+    ['none', 'none', 'none', 'none', 'none'],
+    ['none', 'none', 'none', 'none', 'none'],
+    ['none', 'none', 'none', 'none', 'none'],
+    ['none', 'none', 'none', 'none', 'none'],
+  ]);
 
   const changeRowCoord = (letterCoord) => {
     setActualRowCoord((prev) => [prev[0], letterCoord]);
+  };
+
+  const goToNextRow = () => {
+    setActualRowCoord((prev) => [prev[0] + 1, 0]);
   };
 
   const setRowLetter = (letter, letterCoord = actualRowCoord[1]) => {
@@ -25,8 +38,27 @@ function MyProvider({ children }) {
     });
   };
 
+  const setRowState = (state) => {
+    setRowsState((prev) => {
+      const prevClone = [...prev];
+      prevClone[actualRowCoord[0]] = [...state];
+      return prevClone;
+    });
+  };
+
   return (
-    <MyContext.Provider value={{ actualRowCoord, changeRowCoord, Rows, setRowLetter }}>
+    <MyContext.Provider
+      value={{
+        actualRowCoord,
+        changeRowCoord,
+        goToNextRow,
+        Rows,
+        setRowLetter,
+        answer,
+        rowsState,
+        setRowState,
+      }}
+    >
       {children}
     </MyContext.Provider>
   );
