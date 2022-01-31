@@ -35,7 +35,17 @@ function Key({ value }) {
     }
   };
 
-  return <KeyButton onClick={() => handleClick(value)}>{value}</KeyButton>;
+  const generateId = (value) => {
+    if (value === 'backspace') return 'Backspace';
+    if (value === 'enter') return 'Enter';
+    return `Key${value.toUpperCase()}`;
+  };
+
+  return (
+    <KeyButton id={generateId(value)} onClick={() => handleClick(value)}>
+      {value}
+    </KeyButton>
+  );
 }
 
 const validValues = 'qwertyuiopasdfghjklzxcvbnm'.split('').concat('enter', 'backspace');
