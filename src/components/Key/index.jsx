@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { BsBackspace } from 'react-icons/bs';
 import MyContext from '../../context/MyContext';
 import { KeyButton } from './Key.styles';
 import words from '../../words';
@@ -70,7 +71,7 @@ function Key({ value }) {
 
   return (
     <KeyButton id={generateId(value)} onClick={(event) => handleClick(event, value)}>
-      {value}
+      {value === 'backspace' ? <BsBackspace /> : value}
     </KeyButton>
   );
 }
