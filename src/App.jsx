@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
+import styled from 'styled-components';
 import Grid from './components/Grid';
 import Keyboard from './components/Keyboard';
 import MyProvider from './context/MyProvider';
+
+const Main = styled.main`
+  width: 80%;
+  margin: 64px auto;
+`;
 
 function App() {
   useEffect(() => {
@@ -13,10 +19,10 @@ function App() {
 
   return (
     <MyProvider>
-      <main className="App">
+      <Main>
         <Grid />
         <Keyboard />
-      </main>
+      </Main>
     </MyProvider>
   );
 }

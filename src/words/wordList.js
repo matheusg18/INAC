@@ -1,4 +1,4 @@
-export const WORDS = [
+const WORDS = [
   'adega',
   'aptas',
   'tinta',
@@ -1446,6 +1446,7 @@ export const WORDS = [
   'exato',
   'capaz',
   'lenço',
+  'piauí',
   'assar',
   'ainda',
   'campo',
@@ -1466,3 +1467,5 @@ export const WORDS = [
   'micos',
   'pouco',
 ];
+
+export default WORDS;

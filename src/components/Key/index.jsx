@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BsBackspace } from 'react-icons/bs';
 import MyContext from '../../context/MyContext';
 import { KeyButton } from './Key.styles';
-import words from '../../words';
+import validGuesses from '../../words/validGuesses';
 
 function Key({ value }) {
   const { actualRowCoord, answer, changeRowCoord, goToNextRow, Rows, setRowLetter, setRowState } =
@@ -29,7 +29,7 @@ function Key({ value }) {
 
   const normalizeString = (string) => string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-  const checkCorrectLetterPositions = (guessWord) => {
+  const getCorrectLetterPositionsMap = (guessWord) => {
     const normalizedAnswer = normalizeString(answer);
 
     return guessWord.split('').map((letter, index) => {
@@ -41,13 +41,19 @@ function Key({ value }) {
 
   const handleEnterClick = () => {
     const isRowFull = verifyIfRowIsFull();
-    if (isRowFull === false) return;
+    if (isRowFull === false) {
+      console.log('Faltam letras!');
+      return;
+    }
 
     const guessWord = Rows[actualRowCoord[0]].join('');
-    const validWord = words.find((word) => normalizeString(word) === guessWord);
-    if (!validWord) return;
+    const validWord = validGuesses.find((word) => word === guessWord);
+    if (!validWord) {
+      console.log('Esta não é uma palavra valida');
+      return;
+    }
 
-    setRowState(checkCorrectLetterPositions(guessWord));
+    setRowState(getCorrectLetterPositionsMap(guessWord));
 
     goToNextRow();
   };

@@ -1,4 +1,4 @@
-export const VALIDGUESSES = [
+const VALIDGUESSES = [
   'aarus',
   'abaca',
   'abaco',
@@ -9485,6 +9485,7 @@ export const VALIDGUESSES = [
   'piano',
   'piara',
   'piaus',
+  'piaui',
   'piava',
   'picai',
   'pical',
@@ -13889,3 +13890,5 @@ export const VALIDGUESSES = [
   'zurzi',
   'zurzo',
 ];
+
+export default VALIDGUESSES;

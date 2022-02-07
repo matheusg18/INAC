@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import MyContext from './MyContext';
+import wordList from '../words/wordList';
 
 function MyProvider({ children }) {
   const [actualRowCoord, setActualRowCoord] = useState([0, 0]);
@@ -12,7 +13,7 @@ function MyProvider({ children }) {
     ['', '', '', '', ''],
     ['', '', '', '', ''],
   ]);
-  const [answer, setAnswer] = useState('negão');
+  const [answer, setAnswer] = useState(wordList[Math.floor(Math.random() * wordList.length)]);
   const [rowsState, setRowsState] = useState([
     ['none', 'none', 'none', 'none', 'none'],
     ['none', 'none', 'none', 'none', 'none'],
